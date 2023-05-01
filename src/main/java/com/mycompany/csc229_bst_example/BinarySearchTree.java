@@ -56,28 +56,91 @@ public class BinarySearchTree {
 
     private void doInOrder(BstNode root) {
 
-        // ToDo 1: complete InOrder Traversal 
+        // ToDo 1: complete InOrder Traversal
+        if(root == null) return;
+        doInOrder(root.getLeft());
+        doInOrder(root.getRight());
+        
+        
     }
         public void preOrderTraversal() {
         doPreOrder(this.root);
         // ToDo 2: complete the pre-order travesal . 
     }
+        
+        private void doPreOrder(BstNode root){
+            if(root == null) return;
+            root.getData();
+            doPreOrder(root.getLeft());
+            doPreOrder(root.getRight());
+            
+            
+        }
+        
+        
 
-    public Integer findHeight() {
-
+    public Integer findHeight(BstNode root) {
         // ToDo 3: Find the height of a tree
+       if(root == null) {  
+            return 0;  
+        }
+       
+       else{
+            int leftHeight = 0, rightHeight = 0;
+            
+            if(root.getLeft() != null)  
+                leftHeight = findHeight(root.getLeft());
+            
+            if(root.getRight() != null)  
+                rightHeight = findHeight(root.getRight());  
+             
+            int max = (leftHeight > rightHeight) ? leftHeight : rightHeight;  
+            
+            return (max + 1);  
+
+  
+       
+       
+       
+       }
+        
+        
+    
+    
     }
 
-    
 
-    public int getDepth(BstNode node) {
-        //ToDo 4: complete getDepth of a node 
+    public int getDepth(BstNode node, int x) {
+         if (root == null)
+        return -1;
+  
+    
+    int dist = -1;
+  
+    
+    if ((root.getData() == x)|| 
+      
+        (dist = getDepth(root.getLeft(), x)) >= 0 || 
+          
+        (dist = getDepth(root.getLeft(), x)) >= 0)
+  
+        
+        return dist + 1;
+          
+    return dist;
+        
+    }
+    
+    public BstNode getRoot(){
+        return this.root;
     }
     
    public void print() {
        System.out.println("\n==== BST Print ===== \n");
-        print("", root, false);
-        // ToDo 5: complete the print of the BST
+         if(root == null) return;
+            System.out.println(root.getData());
+            doPreOrder(root.getLeft());
+            doPreOrder(root.getRight());
     }
 
 

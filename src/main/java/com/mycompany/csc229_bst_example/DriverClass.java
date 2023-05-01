@@ -21,10 +21,8 @@ public class DriverClass {
         bst.insert(1);
         bst.insert(4);
         bst.insert(13);
-        System.out.println("\n-------------------");
-        System.out.println("In Order Traversal");
-        bst.inOrderTraversal();
         
-        bst.print();
+       bst.print();
+       
     }
 }
